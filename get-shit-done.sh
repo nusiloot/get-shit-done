@@ -63,11 +63,7 @@ work()
 
     echo $start_token >> $file
 
-    for site in "${site_list[@]}"
-    do
-        echo -e "127.0.0.1\t$site" >> $file
-        echo -e "127.0.0.1\twww.$site" >> $file
-    done
+    printf '127.0.0.1\t%s\n127.0.0.1\twww.%s\n' "${site_list[@]}" >> $file
 
     # Append sites from the ini file by parsing in the following manner:
     # * Take only the relevant lines begining with "sites ="
